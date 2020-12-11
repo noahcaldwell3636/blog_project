@@ -19,7 +19,6 @@
 }
 
 .postcontent{
-  font-family: 'Montserrat';
   font-size: 1.5em;
 }
 
@@ -37,14 +36,32 @@
   font-size: 2.5em;
 }
 
-.nav_padding{
-  padding-top: 2em;
-  padding-bottom: 1em;
+.nav-hieght{
+  height: 4em;
+}
+
+.margin-text{
+  margin-top: 1.5em;
 }
 
 .black_bg{
   background: black;
 }
+
+.left-nav{
+  background: yellow;
+  float: left;
+}
+
+.absolute{
+  position: absolute;
+}
+
+
+
+
+
+
 
 
 
