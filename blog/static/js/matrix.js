@@ -7,7 +7,7 @@ const C = document.getElementById("matrix"),
 const str = "А+Б0В-Г1Д=Е2Ё Ж3З И4Й К5Л М6Н О7П Р8С Т9У Ф!Х Ц?Ч Ш.ЩЪ,Ы Ь:ЭЮ;Я",
   matrix = str.split("");
 
-let font = 5,
+let font = 15,
   col = W / font,
   arr = [];
 
