@@ -5,9 +5,9 @@ const C = document.getElementById("matrix"),
   H = (C.height = container.offsetHeight);
 
 const str = "А+Б0В-Г1Д=Е2Ё Ж3З И4Й К5Л М6Н О7П Р8С Т9У Ф!Х Ц?Ч Ш.ЩЪ,Ы Ь:ЭЮ;Я",
-  matrix = str.split("");
+matrix = str.split("");
 
-let font = 15,
+let font = 5,
   col = W / font,
   arr = [];
 
