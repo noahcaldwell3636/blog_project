@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.urls import path
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
@@ -22,4 +23,5 @@ urlpatterns = [
     url(r'', include('blog.urls')),
     url(r'^accounts/login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^accounts/logout/$', auth_views.LogoutView.as_view(), name='logout', kwargs={'next_page': '/'}),
+    path('django_plotly_dash/', include('django_plotly_dash.urls')),
 ]

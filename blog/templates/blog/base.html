@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load plotly_dash %}
 <html>
 
 <head>
@@ -21,6 +22,12 @@
 </head>
 <!-- begin body -->
 <body class=''>
+  
+  <div>
+    {%load plotly_dash%}
+    {%plotly_app name="SimpleExample"%}
+  </div>
+
   <nav class="navbar nav-hieght black_bg graff_font big_font" id="nav-container">
     <canvas class="absolute inset-border auto-width" id="matrix"></canvas>
     <div class="container" id="">
