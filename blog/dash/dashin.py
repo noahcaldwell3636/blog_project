@@ -179,19 +179,7 @@ children=[
                     style=get_datetime_row_style(),
                     children = [ #---->> clock and date row
                     ################_Time LED_#########################
-                    daq.LEDDisplay(
-                        id='current_time',
-                        value=str(get_time()),
-                        backgroundColor = app_colors['black'],
-                        color=app_colors['red'],
-                        style=get_current_time_style(),
-                    ),
-
-                    ################_Time Postfix_#########################
-                    html.Div(
-                        id='time_postfix',
-                        style=get_time_postfix_style(),
-                    ),
+                    
                     ###############_Date Display_#########################
                     # html.Div(
                     #     id='date-display',
