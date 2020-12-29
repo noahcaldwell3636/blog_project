@@ -1,4 +1,3 @@
-from dash import Dash
 from dash_core_components import Interval, Graph
 from dash_html_components import Div
 from plotly.graph_objs import Scatter, Layout
@@ -7,7 +6,16 @@ from plotly.io import templates
 from dash_bootstrap_components import Col
 from dash.dependencies import Input, Output
 # MY IMPORTS
-from helper_methods import *
+from .helper_methods import *
+# import correct app type based on if the app is being run
+# directly or via the django framework
+if __name__ == '__main__':
+    from dash import Dash    
+    app = Dash("flood_graph")
+else:
+    from django_plotly_dash import DjangoDash
+    app = DjangoDash('flood_graph')
+
 
 app_colors = {
     'black': '#232931',
@@ -26,7 +34,6 @@ theme = {
     'secondary': '#6E6E6E',
 }
 
-app = Dash("flood graph")
 
 app.layout = Col(
     width=8,

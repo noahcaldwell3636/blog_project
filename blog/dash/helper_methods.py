@@ -6,6 +6,7 @@ from dateutil import tz
 import pandas as pd
 from win32api import GetSystemMetrics
 from climacell_api.client import ClimacellApiClient
+from plotly.graph_objs import Scatter
 
 def __init__(self):
     pass
@@ -300,7 +301,6 @@ def get_climacell_data() -> dict:
         'cloud_cover_units': rt_measurements['cloud_cover'].units,
         'weather_code_value': rt_measurements['weather_code'].value,
     }
-
 
 if __name__ == "__main__":
     # get dataframes of flood levels
