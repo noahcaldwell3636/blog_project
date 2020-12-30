@@ -21,7 +21,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
-    url(r'^dashboards/$', include('dashboards.urls')),
+    url('FloodData/', include('flood_data.urls')),
     url(r'^accounts/login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^accounts/logout/$', auth_views.LogoutView.as_view(), name='logout', kwargs={'next_page': '/'}),
     path('django_plotly_dash/', include('django_plotly_dash.urls')),

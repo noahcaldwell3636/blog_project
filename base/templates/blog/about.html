@@ -1,4 +1,4 @@
-{% extends "blog/base.html" %}
+{% extends "base/base.html" %}
 {% block content %}
 <h1>Welcome to my traphouse.</h1>
 <p>
@@ -11,8 +11,5 @@
     outline the approximate current state of the website. Refer below for a break down of the 
     different applications hosted on this site.
 </p>
-
-{% load plotly_dash %}
-{% plotly_app name="flood_graph" %}
 
 {% endblock %}
