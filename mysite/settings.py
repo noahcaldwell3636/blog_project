@@ -14,7 +14,10 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates/blog')
+BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'mysite/templates')
+FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
+BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,11 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'blog',
+    'flood_data',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -56,7 +62,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,],
+        'DIRS': [BASE_TEMPLATE_DIR, FLOOD_TEMPLATE_DIR, BLOG_TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,5 +129,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = '/'
 
+# allows django to use frames within the html for the dash applications
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+# allows for forever-cachable files and compression support
 
 DEBUG = True
