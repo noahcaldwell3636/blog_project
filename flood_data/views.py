@@ -4,4 +4,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def dashboard(request):
-    return render(request, 'flood_data/main_dash.html')
+    return render(request, 'main_dash.html')

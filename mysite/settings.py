@@ -14,7 +14,10 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'base/templates')
+BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'mysite/templates')
+FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
+BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    'base',
     'blog',
     'flood_data',
 ]
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_TEMPLATE_DIR,],
+        'DIRS': [BASE_TEMPLATE_DIR, FLOOD_TEMPLATE_DIR, BLOG_TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
