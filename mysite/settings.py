@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'mysite/templates')
+BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
 BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
 
@@ -62,7 +62,11 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_TEMPLATE_DIR, FLOOD_TEMPLATE_DIR, BLOG_TEMPLATE_DIR],
+        'DIRS': [
+            BASE_TEMPLATE_DIR,
+            FLOOD_TEMPLATE_DIR,
+            BLOG_TEMPLATE_DIR
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
