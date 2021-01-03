@@ -131,6 +131,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+BASE_STATIC_DIR = os.path.join(BASE_DIR, 'mysite/static')
+FLOOD_STATIC_DIR = os.path.join(BASE_DIR, 'flood_data/static')
+BLOG_STATIC_DIR = os.path.join(BASE_DIR, 'blog/static')
+
+STATICFILES_DIRS = [
+    ('base', BASE_STATIC_DIR),
+    ('flood_data', FLOOD_STATIC_DIR),
+    ('blog', BLOG_STATIC_DIR),
+]
+
 LOGIN_REDIRECT_URL = '/'
 
 # allows django to use frames within the html for the dash applications

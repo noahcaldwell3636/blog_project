@@ -23,7 +23,7 @@
     rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+  <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
 
 </head>
 
@@ -54,13 +54,13 @@
     </div>
   </nav>
   <!-- The actual blog posts -->
-  <div class="">
+  <div class="container content">
       {% block content %}
       {% endblock %}
   </div>
 
   <!-- scripts -->
-  <script src="{% static 'js/matrix.js' %}"></script>
+  <script src="{% static 'base/js/matrix.js' %}"></script>
 
 </body>
 
