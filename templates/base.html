@@ -31,7 +31,7 @@
 
   <nav class="navbar nav-hieght black_bg graff_font big_font" id="nav-container">
     <canvas class="absolute" id="matrix"></canvas>
-    <div class="container" id="">
+    <div class="container nav_options_container">
       <ul class="nav navbar-nav margin-text">
         <li><a class='big_font grey_text' href="#">"The Feed"</a></li>
         <li><a href="{% url 'about'%}">About - </a></li>
@@ -43,9 +43,9 @@
     <div>
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
-        <li><a href="{% url 'post_new' %}">New Post</a></li>
-        <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>
-        <li><a href="{% url 'logout' %}">Log out</a></li>
+        <li><a class="highlight_hover" href="{% url 'post_new' %}">New Post</a></li>
+        <li><a class="highlight_hover" href="{% url 'post_draft_list' %}">Drafts</a></li>
+        <li><a class="highlight_hover" href="{% url 'logout' %}">Log out</a></li>
         <li><a>Welcome: {{ user.username }}</a></li>
         {% else %}
         <li><a class='nav navbar-right' href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a></li>

@@ -20,7 +20,7 @@ body {
 }
 
 .text_shadow {
-  text-shadow: .05em .05em .1em  rgb(0, 235, 51);
+  text-shadow: .075em .075em .15em  rgb(0, 235, 51);
 }
 
 .postdate{
@@ -28,7 +28,7 @@ body {
 }
 
 .postcontent{
-  font-size: 1.5em;
+  font-size: 2.25em;
 }
 
 .centerstage{
@@ -42,15 +42,15 @@ body {
 }
 
 .big_font{
-  font-size: 2.5em;
+  font-size: 3.75em;
 }
 
 .nav-hieght{
-  height: 4em;
+  height: 4.5em;
 }
 
 .margin-text{
-  margin-top: 1.5em;
+  margin-top: 2.25em;
 }
 
 .black_bg{
@@ -67,7 +67,9 @@ body {
   /* height: 150%; */
 }
 
-.darkmode{
-  background: black;
+.nav_options_container {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
