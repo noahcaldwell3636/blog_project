@@ -25,7 +25,7 @@ app.layout = Col(
             id="graph_interval",
             interval = 6 * 1000,
         ),
-        Div(Graph(id='flood-graph', animate=False)),
+        Div(Graph(id='flood-graph', animate=True)),
     ],
 )
 

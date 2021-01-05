@@ -1,3 +1,55 @@
-.testing{
-    background-color: yellow;
-  }
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 4px 4px;
+  grid-template-areas:
+    "graph graph graph map"
+    "graph graph graph weather"
+    "fishing tbd1 tbd2 tbd3";
+}
+
+.eighty_vh {
+  height:78vh;
+}
+
+.graph { 
+  grid-area: graph;
+  background-color:aqua;
+  height: 100%;
+}
+
+/* .graph iframe {
+
+
+} */
+
+.map { 
+  grid-area: map;
+  background-color:aqua;
+}
+
+.weather { 
+  grid-area: weather;
+  background-color:aqua;
+}
+
+.fishing { 
+  grid-area: fishing;
+  background-color:aqua;
+}
+
+.tbd1 { 
+  grid-area: tbd1;
+  background-color:aqua;
+}
+
+.tbd2 { 
+  grid-area: tbd2;
+  background-color:aqua;
+}
+
+.tbd3 { 
+  grid-area: tbd3;
+  background-color:aqua;
+}

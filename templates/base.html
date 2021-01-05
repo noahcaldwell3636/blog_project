@@ -43,9 +43,9 @@
     <div>
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
-        <li><a class="highlight_hover" href="{% url 'post_new' %}">New Post</a></li>
-        <li><a class="highlight_hover" href="{% url 'post_draft_list' %}">Drafts</a></li>
-        <li><a class="highlight_hover" href="{% url 'logout' %}">Log out</a></li>
+        <li><a href="{% url 'post_new' %}">New Post</a></li>
+        <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>
+        <li><a href="{% url 'logout' %}">Log out</a></li>
         <li><a>Welcome: {{ user.username }}</a></li>
         {% else %}
         <li><a class='nav navbar-right' href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a></li>
@@ -54,10 +54,10 @@
     </div>
   </nav>
   <!-- The actual blog posts -->
-  <div class="container content">
+  <!-- <div class="container content"> -->
       {% block content %}
       {% endblock %}
-  </div>
+  <!-- </div> -->
 
   <!-- scripts -->
   <script src="{% static 'base/js/matrix.js' %}"></script>
