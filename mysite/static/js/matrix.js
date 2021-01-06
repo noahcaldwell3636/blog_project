@@ -7,10 +7,10 @@ const C = document.getElementById("matrix"),
   W = (C.width = window.innerWidth),
   H = (C.height = container.offsetHeight);
 
-const str = "А+Б0В-Г1Д=Е2Ё Ж3З И4Й К5Л М6Н О7П Р8С Т9У Ф!Х Ц?Ч Ш.ЩЪ,Ы Ь:ЭЮ;Я",
+const str = "$$$€¥₤£¢¢  ₢₡₠৳  ฿฿฿¤₣₴  ₰₪₲₳  ₯₱₥₫",
 matrix = str.split("");
 
-let font = 6,
+let font = 15,
   col = W / font,
   arr = [];
 
