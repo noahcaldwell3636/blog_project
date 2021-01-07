@@ -17,6 +17,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
 BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
+SOCIAL_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/templates')
+ACCOUNTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
+
 
 
 
@@ -44,6 +47,8 @@ INSTALLED_APPS = [
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'blog',
     'flood_data',
+    'social'
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -65,7 +70,9 @@ TEMPLATES = [
         'DIRS': [
             BASE_TEMPLATE_DIR,
             FLOOD_TEMPLATE_DIR,
-            BLOG_TEMPLATE_DIR
+            BLOG_TEMPLATE_DIR,
+            SOCIAL_TEMPLATE_DIR,
+            ACCOUNTS_TEMPLATE_DIR,
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -134,11 +141,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 BASE_STATIC_DIR = os.path.join(BASE_DIR, 'mysite/static')
 FLOOD_STATIC_DIR = os.path.join(BASE_DIR, 'flood_data/static')
 BLOG_STATIC_DIR = os.path.join(BASE_DIR, 'blog/static')
+SOCIAL_STATIC_DIR = os.path.join(BASE_DIR, 'social/static')
 
 STATICFILES_DIRS = [
     ('base', BASE_STATIC_DIR),
     ('flood_data', FLOOD_STATIC_DIR),
     ('blog', BLOG_STATIC_DIR),
+    ('social', SOCIAL_STATIC_DIR),
 ]
 
 LOGIN_REDIRECT_URL = '/'
