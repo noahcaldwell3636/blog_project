@@ -29,8 +29,24 @@
 
 <body class=''>
 
+
+
   <nav class="navbar nav-hieght black_bg graff_font big_font" id="nav-container">
     <canvas class="absolute" id="matrix"></canvas>
+    <div class='container'>
+      <ul class='nav navbar-nav navbar-left'>
+        {% if user.is_authenticated %}
+        <li><a href="#">Post</a></li>
+        <li><a href="#">Groups</a></li>
+        <li><a href="#">Create-Group</a></li>  
+        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="#">s-Groups</a></li>
+        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+        <li><a href="{% url 'accounts:signup' %}">Sign Up/a></li>
+        {% endif %}
+      </ul>
+    </div>
     <div class="container nav_options_container">
       <ul class="nav navbar-nav margin-text">
         <li><a class='big_font grey_text' href="#">"The Feed"</a></li>

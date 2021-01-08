@@ -45,10 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    'bootstrap3',
     'blog',
     'flood_data',
-    'social'
-    'accounts'
+    'social',
+    'social.accounts',
 ]
 
 MIDDLEWARE = [
@@ -151,6 +152,7 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'thanks-logout'
 
 # allows django to use frames within the html for the dash applications
 X_FRAME_OPTIONS = 'SAMEORIGIN'
