@@ -1,4 +1,4 @@
-  
+
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -21,6 +21,14 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Eczar&family=Gentium+Basic&family=Sedgwick+Ave+Display&display=swap"
     rel="stylesheet">
+  <style>
+    @font-face {
+        font-family: 'judus';
+        src: url("{% static 'base/fonts/judus/judus.woff2' %}") format('woff2'),
+          url("(% static 'base/fonts/judus/judus.woff' %}") format('woff'),
+          url("(% static 'base/fonts/judus/judus.ttf' %}") format('truetype');
+    }
+  </style>
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
@@ -38,7 +46,7 @@
         {% if user.is_authenticated %}
         <li><a href="#">Post</a></li>
         <li><a href="#">Groups</a></li>
-        <li><a href="#">Create-Group</a></li>  
+        <li><a href="#">Create-Group</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
         <li><a href="#">Groups</a></li>
