@@ -12,8 +12,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Base and template directories
+########################################################################
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
 BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
 BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
@@ -21,8 +22,7 @@ SOCIAL_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/templates')
 ACCOUNTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
 GROUPS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
 POSTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
-
-
+########################################################################
 
 
 # Quick-start development settings - unsuitable for production
@@ -40,20 +40,23 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    'bootstrap3',
-    'blog',
-    'flood_data',
-    'social',
-    'social.accounts',
-    'social.groups',
-    'social.posts',
+    # non-default imported apps 
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
+    'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
+    # created apps
+    'blog', # Personal/admin anncouncements
+    'flood_data', # side project to be later seperated as stand-alone app
+    'social', # contains all of the basic user's functionality
+    'social.accounts', # non-admin/basic user accounts
+    'social.groups', # reddit-like pages for the users to interact
+    'social.posts', # text or media posts for communication
 ]
 
 MIDDLEWARE = [
@@ -69,6 +72,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+# designate the locations of the html template folders so the django
+# framework can find the html files when referenced in a view
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -95,7 +100,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -143,6 +147,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+# 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
