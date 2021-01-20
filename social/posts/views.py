@@ -17,23 +17,22 @@ class PostList(SelectRelatedMixin, generic.ListView):
     """Returns a response containing a list of Post Models
     with their author/user and group.
 
-    Args:
-        ((SelectRelatedMixin)) allows to preload a query of the post's
-        foreign keys so a query does not need to be made each time it is
-        referenced. Its purpose is to improve performance.
-        ((generic.ListView)): queries a list of post models that can be referenced
-        in the html tag 'object_list'
+    Inherited:
+        ((SelectRelatedMixin)) Preloads a query of the post's
+        specified foreign keys. Its purpose is to improve performance.
+        ((generic.ListView)): queries a list of post models that can be 
+        referenced in the html tag 'object_list'
     """
 
     model = models.Post # will listview the post model
-    select_related = ("user", "group") # will query foreign keys to be referenced
+    select_related = ("author", "group") # will query foreign keys to be referenced
 
 
 class UserPosts(generic.ListView):
     """Return a list of all the posts for the current/logged
     in user.
 
-    Args:
+    Inherited:
         ((generic.ListView)):  queries a list of post models authored by the 
         current user. The query can be referenced in the html tag 'object_list'.
     """
@@ -66,20 +65,21 @@ class UserPosts(generic.ListView):
 
 
 class PostDetail(SelectRelatedMixin, generic.DetailView):
-    """[summary]
+    """Returns the details of a particular post, i believe.
 
-    Args:
-        SelectRelatedMixin ([type]): [description]
-        generic ([type]): [description]
-
-    Returns:
-        [type]: [description]
+    Inherited:
+        ((SelectRelatedMixin)): Preloads a query of the post's
+        specified foreign keys. Its purpose is to improve performance.
+        ((generic.DetailView)): Returns the object the view is operating upon.
+        In this case, it woulld be the post the user has selected.
     """
 
     model = models.Post
-    select_related = ("user", "group")
+    select_related = ("author", "group")
 
     def get_queryset(self):
+        """TODO Currently confused as to why this queryset needs to
+        be filtered."""
         queryset = super().get_queryset()
         return queryset.filter(
             user__username__iexact=self.kwargs.get("username")
@@ -87,25 +87,33 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    # form_class = forms.PostForm
+    """Return a form for the user to create a post.
+
+    Inherited:
+        ((LoginRequiredMixin)) : By default will send the user 
+        to the login page if they are not authorized. You can 
+        modify any parameters of AccessMixin for customizations.
+        ((SelectRelatedMixin)) : Preloads a query of the post's
+        specified foreign keys. Its purpose is to improve performance.
+        ((generic.CreateView)) : Displays a form for creating an object
+        with built in validation errors.
+    """
     fields = ('message','group')
     model = models.Post
 
-    # def get_form_kwargs(self):
-    #     kwargs = super().get_form_kwargs()
-    #     kwargs.update({"user": self.request.user})
-    #     return kwargs
-
     def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
+        """Called when a valid form is posted. In this case,
+        the current user is saved as the new post's author along
+        with the information captured in the form."""
+        self.object = form.save(commit=False) # gets form instance but doesnt commit save so changes can still be made
+        self.object.author = self.request.user
         self.object.save()
         return super().form_valid(form)
 
 
 class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = models.Post
-    select_related = ("user", "group")
+    select_related = ("author", "group")
     success_url = reverse_lazy("posts:all")
 
     def get_queryset(self):
