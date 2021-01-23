@@ -1,3 +1,9 @@
+'''
+POSTS - VIEWS.py
+Fetches all basic user 'post' data from the database so it may
+be referenced as html tags.
+'''
+
 # django imports
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -11,6 +17,7 @@ from . import models
 # allows reference to the current logged in user
 from django.contrib.auth import get_user_model
 User = get_user_model()
+
 
 
 class PostList(SelectRelatedMixin, generic.ListView):
@@ -65,7 +72,7 @@ class UserPosts(generic.ListView):
 
 
 class PostDetail(SelectRelatedMixin, generic.DetailView):
-    """Returns the details of a particular post, i believe.
+    """Returns the details of a particular post.
 
     Inherited:
         ((SelectRelatedMixin)): Preloads a query of the post's
@@ -87,7 +94,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    """Return a form for the user to create a post.
+    """Returns a form for the user to create a post.
 
     Inherited:
         ((LoginRequiredMixin)) : By default will send the user 
@@ -112,6 +119,15 @@ class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 
 
 class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
+    """Allows the user to delete a post.
+
+    Inherited:
+        ((LoginRequiredMixin)) : Ensures the user must be logged in to delete a post.
+        ((SelectRelatedMixin)) : Preloads specifed model's ForeignKeys in order to
+        improve performance.
+        ((generic.DeleteView)) : provides functionality for deleting a model, a post
+        in this case.
+    """
     model = models.Post
     select_related = ("author", "group")
     success_url = reverse_lazy("posts:all")
