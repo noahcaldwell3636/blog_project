@@ -1,6 +1,5 @@
 from django import forms
-
-from posts import models
+from . import models
 
 
 class PostForm(forms.ModelForm):

@@ -7,13 +7,13 @@ be referenced as html tags.
 # django imports
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.http import Http404
 from django.views import generic
 from braces.views import SelectRelatedMixin
 # my imports
 from . import forms
-from . import models
+from .models import Post
 # allows reference to the current logged in user
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -31,7 +31,7 @@ class PostList(SelectRelatedMixin, generic.ListView):
         referenced in the html tag 'object_list'
     """
 
-    model = models.Post # will listview the post model
+    model = Post # will listview the post model
     select_related = ("author", "group") # will query foreign keys to be referenced
 
 
@@ -44,7 +44,7 @@ class UserPosts(generic.ListView):
         current user. The query can be referenced in the html tag 'object_list'.
     """
 
-    model = models.Post
+    model = Post
     template_name = "posts/user_post_list.html"
 
     def get_queryset(self):
@@ -81,7 +81,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
         In this case, it woulld be the post the user has selected.
     """
 
-    model = models.Post
+    model = Post
     select_related = ("author", "group")
 
     def get_queryset(self):
@@ -105,8 +105,8 @@ class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
         ((generic.CreateView)) : Displays a form for creating an object
         with built in validation errors.
     """
-    fields = ('message','group')
-    model = models.Post
+    model = Post
+    fields = ('message','groups')
 
     def form_valid(self, form):
         """Called when a valid form is posted. In this case,
@@ -128,7 +128,7 @@ class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
         ((generic.DeleteView)) : provides functionality for deleting a model, a post
         in this case.
     """
-    model = models.Post
+    model = Post
     select_related = ("author", "group")
     success_url = reverse_lazy("posts:all")
 

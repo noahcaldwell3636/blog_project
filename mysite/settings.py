@@ -20,8 +20,8 @@ FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
 BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
 SOCIAL_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/templates')
 ACCOUNTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
-GROUPS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
-POSTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
+GROUPS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/groups/templates')
+POSTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/posts/templates')
 ########################################################################
 
 
@@ -164,7 +164,7 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = 'socail-logout'
+LOGOUT_REDIRECT_URL = '/'
 
 # allows django to use frames within the html for the dash applications
 X_FRAME_OPTIONS = 'SAMEORIGIN'
