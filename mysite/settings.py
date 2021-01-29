@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize', # tools for human readable data 
     # non-default imported apps 
     'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
     'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
