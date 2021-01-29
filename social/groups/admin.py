@@ -7,3 +7,4 @@ class GroupMemberInline(admin.TabularInline):
 
 
 admin.site.register(models.Group)
+

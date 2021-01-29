@@ -1,3 +1,4 @@
+from ..posts.models import Post
 from django.core.checks import messages
 from .models import Group
 from django.shortcuts import get_object_or_404, render
@@ -10,8 +11,9 @@ from .models import Group, GroupMember
 
 
 class CreateGroup(LoginRequiredMixin, generic.CreateView):
-    fields = ('name', 'description')
     model = Group
+    fields = ('name', 'description')
+    
 
 class SingleGroup(generic.DetailView):
     model = Group
@@ -21,7 +23,7 @@ class ListGroups(generic.ListView):
     paginate_by = 15
 
 class JoinGroup(LoginRequiredMixin, generic.RedirectView):
-
+    
     def get_redirect_url(self, *args, **kwargs):
         return reverse("groups:single",kwargs={"slug": self.kwargs.get("slug")})
 
@@ -49,12 +51,12 @@ class LeaveGroup(LoginRequiredMixin, generic.RedirectView):
 
         try:
 
-            membership = models.GroupMember.objects.filter(
+            membership = GroupMember.objects.filter(
                 user=self.request.user,
                 group__slug=self.kwargs.get("slug")
             ).get()
 
-        except models.GroupMember.DoesNotExist:
+        except GroupMember.DoesNotExist:
             messages.warning(
                 self.request,
                 "You can't leave this group because you aren't in it."

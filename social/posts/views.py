@@ -106,7 +106,7 @@ class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
         with built in validation errors.
     """
     model = Post
-    fields = ('message','groups')
+    fields = ('message','group')
 
     def form_valid(self, form):
         """Called when a valid form is posted. In this case,

@@ -8,14 +8,14 @@
 
     {% if user in group.members.all %}
 
-    <a href="{% url 'groups:leave' slug=groups.slug %}"
+    <a href="{% url 'groups:leave' slug=group.slug %}"
         class='btn btn-lg btn-fill btn-warning'>
         <span class="glyphicon glyphicon-remove-circle">Leave</span>
     </a>
 
     {% else %}
 
-    <a href="{% url 'groups:join' slug=groups.slug %}"
+    <a href="{% url 'groups:join' slug=group.slug %}"
         class='btn btn-lg btn-fill btn-warning'>
         <span class="glyphicon glyphicon-ok-circle">Join</span>
     </a>
@@ -28,7 +28,7 @@
 
 {% block group_content %}
 <div class="col-md-8">
-    {% if group.posts.count==0 %}
+    {% if group.posts.count == 0 %}
         <h2>No posts in this group yet!</h2>
     {% else %}
         {% for post in group.post.all %}
@@ -36,6 +36,7 @@
         {% endfor %}
     {% endif %}
 </div>
+{% endblock %}
 
 
 
