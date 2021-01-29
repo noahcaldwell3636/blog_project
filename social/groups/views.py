@@ -68,5 +68,8 @@ class LeaveGroup(LoginRequiredMixin, generic.RedirectView):
                 "You have successfully left this group."
             )
 
+        return super().get(request, *args, **kwargs)
+        
+
         
 
