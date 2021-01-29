@@ -1,5 +1,5 @@
 from ..posts.models import Post
-from django.core.checks import messages
+from django.contrib import messages
 from .models import Group
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
