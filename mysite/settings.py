@@ -47,11 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # NON-DEFAULT INSTALLED APPS 
     'django.contrib.humanize', # tools for human readable data 
-    # non-default imported apps 
     'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
     'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
-    # created apps
+    # CREATED APPS
     'blog', # Personal/admin anncouncements
     'flood_data', # side project to be later seperated as stand-alone app
     'social', # contains all of the basic user's functionality
