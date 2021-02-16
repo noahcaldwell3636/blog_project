@@ -1,4 +1,4 @@
-  
+
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -21,6 +21,14 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Eczar&family=Gentium+Basic&family=Sedgwick+Ave+Display&display=swap"
     rel="stylesheet">
+  <style>
+    @font-face {
+        font-family: 'judus';
+        src: url("{% static 'base/fonts/judus/judus.woff2' %}") format('woff2'),
+          url("(% static 'base/fonts/judus/judus.woff' %}") format('woff'),
+          url("(% static 'base/fonts/judus/judus.ttf' %}") format('truetype');
+    }
+  </style>
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
@@ -29,8 +37,24 @@
 
 <body class=''>
 
+
+
   <nav class="navbar nav-hieght black_bg graff_font big_font" id="nav-container">
     <canvas class="absolute" id="matrix"></canvas>
+    <div class='container'>
+      <ul class='nav navbar-nav navbar-left'>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
+          <li><a href="{% url 'groups:all' %}" class="btn btn-simple">Groups</a></li>
+          <li><a href="{% url 'groups:create' %}" class="btn btn-simple">Create Group</a></li>
+          <li><a href="{% url 'accounts:social-logout' %}" class="btn btn-simple">Log out</a></li>
+        {% else %}
+          <li><a href="{% url 'groups:all' %}"class="btn btn-simple">Groups</a></li>
+          <li><a href="{% url 'accounts:social-login' %}" class="btn btn-simple">Log in</a></li>
+          <li><a href="{% url 'accounts:social-signup' %}" class="btn btn-simple">Sign up</a></li>
+        {% endif %}
+      </ul>
+    </div>
     <div class="container nav_options_container">
       <ul class="nav navbar-nav margin-text">
         <li><a class='big_font grey_text' href="#">"The Feed"</a></li>
@@ -45,7 +69,7 @@
         {% if user.is_authenticated %}
         <li><a href="{% url 'post_new' %}">New Post</a></li>
         <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>
-        <li><a href="{% url 'logout' %}">Log out</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
         <li><a>Welcome: {{ user.username }}</a></li>
         {% else %}
         <li><a class='nav navbar-right' href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a></li>
