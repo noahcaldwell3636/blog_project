@@ -12,12 +12,17 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Base and template directories
+########################################################################
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
 BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
 BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
-
+SOCIAL_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/templates')
+ACCOUNTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
+GROUPS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/groups/templates')
+POSTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/posts/templates')
+########################################################################
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,15 +40,23 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    'blog',
-    'flood_data',
+    # NON-DEFAULT INSTALLED APPS 
+    'django.contrib.humanize', # tools for human readable data 
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
+    'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
+    # CREATED APPS
+    'blog', # Personal/admin annco
+       'social', # contains all of the basic user's functionality
+    'social.accounts', # non-admin/basic user accounts
+    'social.groups', # reddit-like pages for the users to interact
+    'social.posts', # text or media posts for communication
 ]
 
 MIDDLEWARE = [
@@ -59,13 +72,20 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+# designate the locations of the html template folders so the django
+# framework can find the html files when referenced in a view
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_TEMPLATE_DIR,
             FLOOD_TEMPLATE_DIR,
-            BLOG_TEMPLATE_DIR
+            BLOG_TEMPLATE_DIR,
+            # social apps
+            SOCIAL_TEMPLATE_DIR,
+            ACCOUNTS_TEMPLATE_DIR,
+            GROUPS_TEMPLATE_DIR,
+            POSTS_TEMPLATE_DIR,
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -80,7 +100,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -128,20 +147,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+# 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 BASE_STATIC_DIR = os.path.join(BASE_DIR, 'mysite/static')
 FLOOD_STATIC_DIR = os.path.join(BASE_DIR, 'flood_data/static')
 BLOG_STATIC_DIR = os.path.join(BASE_DIR, 'blog/static')
+SOCIAL_STATIC_DIR = os.path.join(BASE_DIR, 'social/static')
 
 STATICFILES_DIRS = [
     ('base', BASE_STATIC_DIR),
     ('flood_data', FLOOD_STATIC_DIR),
     ('blog', BLOG_STATIC_DIR),
+    ('social', SOCIAL_STATIC_DIR),
 ]
 
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # allows django to use frames within the html for the dash applications
 X_FRAME_OPTIONS = 'SAMEORIGIN'
