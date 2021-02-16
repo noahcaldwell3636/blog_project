@@ -52,9 +52,8 @@ INSTALLED_APPS = [
     'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
     'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
     # CREATED APPS
-    'blog', # Personal/admin anncouncements
-    'flood_data', # side project to be later seperated as stand-alone app
-    'social', # contains all of the basic user's functionality
+    'blog', # Personal/admin annco
+       'social', # contains all of the basic user's functionality
     'social.accounts', # non-admin/basic user accounts
     'social.groups', # reddit-like pages for the users to interact
     'social.posts', # text or media posts for communication
