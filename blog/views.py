@@ -1,3 +1,4 @@
+from django.forms.widgets import HiddenInput
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from blog.models import Post, Comment
@@ -68,6 +69,7 @@ def post_publish(request, pk):
     post.publish()
     return redirect('post_detail', pk=pk)
 
+
 @login_required
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -76,11 +78,19 @@ def add_comment_to_post(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
+            comment.author = request.user
             comment.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = CommentForm()
-    return render(request, 'comment_form.html', {'form': form})
+    return render(
+        request,
+        'blog/comment_form.html',
+        { # context data
+            'form': form,
+            'user': request.user,
+        }
+    )
 
 
 @login_required

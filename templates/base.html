@@ -43,7 +43,7 @@
     <canvas class="absolute" id="matrix"></canvas>
     <div class='container'>
       <ul class='nav navbar-nav navbar-left'>
-        {% if user.is_authenticated %}
+        <!-- {% if user.is_authenticated %}
           <li><a href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
           <li><a href="{% url 'groups:all' %}" class="btn btn-simple">Groups</a></li>
           <li><a href="{% url 'groups:create' %}" class="btn btn-simple">Create Group</a></li>
@@ -52,16 +52,17 @@
           <li><a href="{% url 'groups:all' %}"class="btn btn-simple">Groups</a></li>
           <li><a href="{% url 'accounts:social-login' %}" class="btn btn-simple">Log in</a></li>
           <li><a href="{% url 'accounts:social-signup' %}" class="btn btn-simple">Sign up</a></li>
-        {% endif %}
+        {% endif %} -->
       </ul>
     </div>
     <div class="container nav_options_container">
       <ul class="nav navbar-nav margin-text">
-        <li><a class='big_font grey_text' href="#">"The Feed"</a></li>
+        
+
+        
         <li><a href="{% url 'about'%}">About - </a></li>
-        <li><a href="{% url 'post_list' %}">Blog - </a></li>
-        <li><a href="{% url 'main_dash' %}">Flood Data - </a></li>
-        <li><a href="Gamble">Gamble</a></li>
+        <li><a href="{% url 'post_list' %}">Blog</a></li>
+        <!-- <li><a href="Gamble">Gamble</a></li> -->
       </ul>
     </div>
     <div>

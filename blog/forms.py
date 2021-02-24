@@ -35,9 +35,9 @@ class CommentForm(forms.ModelForm):
         # choose what model will be created in the form
         model = Comment
         # choose what input are needed from the user
-        fields = ('author', 'text',)
+        fields = ('text', )
         # ovverride defaults for the input forms
         widgets = {
-            'author': forms.TextInput(attrs={'class': 'textinputclass'}),
-            'text': forms.Textarea(attrs={'class': 'editable medium-editor-textarea'}),
+            # 'author': forms.TextInput(attrs={'class': 'textinputclass'}),
+            'text': forms.Textarea(attrs={'class': 'editable medium-editor-textarea bg-white'}),
         }
