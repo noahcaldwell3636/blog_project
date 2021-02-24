@@ -9,7 +9,7 @@
     {% else %}
         <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
     {% endif %}
-    <p class='postcontent' >{{ post.text|safe|linebreaksbr }}</p>
+    <p class=''>{{ post.text|safe|linebreaksbr }}</p>
     {% if author.is_authenticated %}
         <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <a class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
@@ -23,7 +23,7 @@
         <p>
             Posted by: <strong>{{ comment.author }}</strong>
             {% if request.user.is_authenticated %}
-                <a class="inline" href="{% url 'comment_remove' pk=comment.pk %}">remove</a>
+                <a class="" href="{% url 'comment_remove' pk=comment.pk %}">remove</a>
             {% endif %}
         </p>
     {% empty %}
