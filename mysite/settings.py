@@ -51,9 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.humanize', # tools for human readable data 
     'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
     'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
+    'colorfield',
     # CREATED APPS
     'blog', # Personal/admin annco
-       'social', # contains all of the basic user's functionality
+    'social', # contains all of the basic user's functionality
     'social.accounts', # non-admin/basic user accounts
     'social.groups', # reddit-like pages for the users to interact
     'social.posts', # text or media posts for communication
@@ -79,7 +80,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_TEMPLATE_DIR,
-            FLOOD_TEMPLATE_DIR,
             BLOG_TEMPLATE_DIR,
             # social apps
             SOCIAL_TEMPLATE_DIR,
@@ -158,7 +158,6 @@ SOCIAL_STATIC_DIR = os.path.join(BASE_DIR, 'social/static')
 
 STATICFILES_DIRS = [
     ('base', BASE_STATIC_DIR),
-    ('flood_data', FLOOD_STATIC_DIR),
     ('blog', BLOG_STATIC_DIR),
     ('social', SOCIAL_STATIC_DIR),
 ]

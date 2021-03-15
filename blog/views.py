@@ -3,11 +3,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from blog.models import Post, Comment
 from django.utils import timezone
-from blog.forms import PostForm, CommentForm
+from blog.forms import PostForm, CommentForm, TagForm
 
 from django.views.generic import (TemplateView,ListView,
                                   DetailView,CreateView,
-                                  UpdateView,DeleteView)
+                                  UpdateView,DeleteView,
+                                  FormView,)
 
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -20,6 +21,7 @@ class AboutView(TemplateView):
 
 class PostListView(ListView):
     model = Post
+    template_name = "post_detail"
 
     def get_queryset(self):
         return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
@@ -28,21 +30,39 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        context['featured_list'] = Post.objects.filter(featured=True)
+        return context
 
-class CreatePostView(LoginRequiredMixin,CreateView):
+class AddTagFormView(FormView):
+    form_class = TagForm
+
+
+class CreatePostView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     redirect_field_name = 'post_detail.html'
     form_class = PostForm
     model = Post
 
 
-class PostUpdateView(LoginRequiredMixin,UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    """View for editing and updating an exisiting post.
+
+    Args:
+        LoginRequiredMixin: django authication mixin
+        UpdateView:django update view
+    """    
     login_url = '/login/'
     redirect_field_name = 'post_detail.html'
-
     form_class = PostForm
-
     model = Post
+
+
+    def get_context_data(self, **kwargs):
+            context = super(UpdateView, self).get_context_data(**kwargs)
+            context['tag_form'] = TagForm
+            return context
 
 
 class DraftListView(LoginRequiredMixin,ListView):
