@@ -1,0 +1,25 @@
+{% load static %}
+<div class="white-wrapper"><img src="{% static 'blog/images/avi.jpg' %}" alt="" class="circle-profile">
+    <p class="site-description">
+        The equivelent of a chimp with a blank perscription pad banging
+        on a keyboard until it computes.
+    </p>
+    <div class="grey-rule"></div>
+    <h2 class="small-heading">Featured Posts:</h2>
+    <div class="feature-posts-list w-dyn-list">
+        {% if featured_list %}
+        <div role="list" class="w-dyn-items">
+        {% for feature in featured_list %}
+        <div role="listitem" class="w-dyn-item">
+            <a href="{% url 'post_detail' pk=feature.pk %}" class="small-post-link">{{ feature.title }}</a>
+        </div>
+        {% endfor %}
+        </div>
+        {% else %}
+            <p>No items found.</p>
+        </div>
+        {% endif %}
+    </div>
+    <div class="grey-rule"></div>
+    {% load my_tags %} {% social_link_group %}
+</div>

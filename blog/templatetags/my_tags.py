@@ -21,3 +21,14 @@ def add_comment_to_post(request, pk):
         form = CommentForm()
     return {"form": form, "post": post}
 
+
+@register.inclusion_tag('blog/_sidebar.html')
+def sidebar():
+    featured_list = Post.objects.filter(featured=True)
+    return {'featured_list': featured_list}
+
+
+@register.inclusion_tag('blog/_social_link_group.html')
+def social_link_group():
+    featured_list = Post.objects.filter(featured=True)
+    return {'featured_list': featured_list}

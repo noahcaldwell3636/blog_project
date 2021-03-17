@@ -1,0 +1,104 @@
+
+/* html elements */
+body {
+  background-color:black;
+  color:green;
+}
+.nav a{
+  color: grey;
+}
+/* html elements */
+
+
+/* fonts */
+.title_font{
+  font-family: 'Eczar', serif;
+}
+.body_font{
+  font-family: 'Gentium Basic', serif;
+}
+.graff_font{
+  font-family: 'Sedgwick Ave Display', cursive;
+}
+.judus_font{
+  font-family: "judus";
+}
+/* fonts */
+
+
+/* text styling */
+.big_font{
+  font-size: 3.75em;
+}
+.text_shadow {
+  text-shadow: .075em .075em .15em  rgb(0, 235, 51);
+}
+/* text styling */
+
+
+.fixed{
+  position: fixed;
+}
+
+.bottom-0{
+  position: absolute;
+  bottom: 0;
+}
+
+.postdate{
+  text-align: center;
+}
+
+.postcontent{
+  font-size: 2.25em;
+}
+
+.fit_bg{
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.centerstage{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-comment{
+  position: absolute;
+  right: 0px;
+}
+
+.nav-hieght{
+  height: 4.5em;
+}
+
+.margin-text{
+  margin-top: 2.25em;
+}
+
+.black_bg{
+  background: black;
+}
+
+.left-nav{
+  background: yellow;
+  float: left;
+}
+
+.absolute{
+  position: absolute;
+  /* height: 150%; */
+}
+
+.nav_options_container {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.full-page{
+  height: 100vh;
+}
+.width-100p {
+  width: 100%;
+}
