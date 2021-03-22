@@ -12,6 +12,7 @@ from django.views.generic import (TemplateView,ListView,
 
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.utils import OperationalError
 
 
 
@@ -24,16 +25,25 @@ class PostListView(ListView):
     template_name = "post_detail"
 
     def get_queryset(self):
-        return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        try:
+            return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        except OperationalError:
+            pass
+        
 
 
 class PostDetailView(DetailView):
     model = Post
 
+    # is/ should this be handled in the SIDEBAR function in my_tags.py?
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
-        context['featured_list'] = Post.objects.filter(featured=True)
+        try:
+            context['featured_list'] = Post.objects.filter(featured=True)
+        except OperationalError:
+            context['featured_list'] = None
         return context
+
 
 class AddTagFormView(FormView):
     form_class = TagForm
@@ -50,7 +60,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     """View for editing and updating an exisiting post.
 
     Args:
-        LoginRequiredMixin: django authication mixin
+        LoginRequiredMixin: django authentication mixin
         UpdateView:django update view
     """    
     login_url = '/login/'
@@ -61,7 +71,10 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
             context = super(UpdateView, self).get_context_data(**kwargs)
-            context['tag_form'] = TagForm
+            try:
+                context['tag_form'] = TagForm
+            except OperationalError:
+                pass
             return context
 
 
@@ -72,8 +85,10 @@ class DraftListView(LoginRequiredMixin,ListView):
     model = Post
 
     def get_queryset(self):
-        return Post.objects.filter(published_date__isnull=True).order_by('created_date')
-
+        try:
+            return Post.objects.filter(published_date__isnull=True).order_by('created_date')
+        except OperationalError:
+            pass
 
 class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
@@ -125,4 +140,4 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     post_pk = comment.post.pk
     comment.delete()
-    return redirect('post_detail', pk=post_pk)
+    return redirect('post_detail', pk=pk)

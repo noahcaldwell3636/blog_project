@@ -43,9 +43,17 @@ class Comment(models.Model):
 
 
 class Tag(models.Model):
-    post = models.ManyToManyField(Post, related_name='tags')
-    name = models.CharField(max_length=50)
-    color = ColorField(default="FF0000", blank=False)
+    title = models.CharField(max_length=250, blank=True)
+    posts = models.ManyToManyField("Post", blank=True)
+
+    class Meta:
+        verbose_name = "tag"
+        verbose_name_plural = "tags"
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
+
 
 
 

@@ -11,7 +11,11 @@
           <div class="post-content">
             <h1>{{ post.title }}</h1>
             <div class="details-wrapper">
-              <div class="post-info">{{ post.published_date }}</div>
+              {% if post.published_date %}
+                <div class="post-info">{{ post.published_date }}</div>
+              {% else %}
+                <a class="btn btn-default grey-green-btn" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+              {% endif %}
               <div class="post-info">|</div>
               <a href="#" class="post-info when-link"></a>
             </div>
@@ -21,7 +25,7 @@
         </div>
         <!-- BACK TO ALL POSTS -->
         <div class="button-wrapper">
-          <a href="all-posts.html" class="button w-button">← All posts</a>
+          <a href="{% url 'post_list' %}" class="button w-button">← All posts</a>
         </div>
         <!-- MOBILE SIDEBAR -->
         <div class="sidebar-on-mobile">

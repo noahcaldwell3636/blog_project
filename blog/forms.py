@@ -17,10 +17,10 @@ class PostForm(forms.ModelForm):
         # the widget variable is used to override django input form defaults
         widgets = {
             'title': forms.TextInput(attrs={
-                'class': 'textinputclass'}
+                'class': 'textinputclass input-title'}
             ),
             'text': forms.Textarea(attrs={
-                'class': 'editable medium-editor-textarea postcontent'
+                'class': 'editable medium-editor-textarea input-post-content'
             }),
         }
 
@@ -34,11 +34,10 @@ class TagForm(forms.ModelForm):
         # choose what model will be created in the form
         model = Tag
         # choose what input are needed from the user
-        fields = ('name', )
+        fields = ('title', )
         # ovverride defaults for the input forms
         widgets = {
-            # 'author': forms.TextInput(attrs={'class': 'textinputclass'}),
-            'name': forms.Textarea(attrs={'class': 'form-control'}),
+            '': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 

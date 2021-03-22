@@ -142,7 +142,6 @@ figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  overflow: auto;
   margin-right: auto;
   margin-left: auto;
   padding: 15px 0px;
@@ -200,7 +199,7 @@ figcaption {
   transform: translateY(-50%);
   top: 50%;
   padding-right: 20px;
-  padding-bottom: 2vh;
+  padding-bottom: 1%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
@@ -406,7 +405,6 @@ figcaption {
   height: 180px;
   margin-right: 20px;
   border-radius: 3px;
-  background-image: url('https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg');
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -424,6 +422,7 @@ figcaption {
   border-radius: 0px;
   background-color: #404047;
   color: #d4d4d4;
+  margin-bottom: 1.5%;
 }
 
 .post-summary {
@@ -990,7 +989,7 @@ figcaption {
   }
 }
 
-#w-node-_276cbe6b-d7e2-e546-8429-fffb728c47af-2a4639ec {
+.home-nav-link {
   -ms-grid-column: 1;
   grid-column-start: 1;
   -ms-grid-column-span: 1;
@@ -1003,21 +1002,23 @@ figcaption {
   justify-self: auto;
 }
 
-#w-node-edb3231c-14b9-cce0-57b2-374fbf749cfe-2a4639ec {
+.topics-nav-dropdown {
   -ms-grid-row: 3;
   -ms-grid-column: 3;
   grid-area: Area;
   -ms-grid-column-align: center;
   justify-self: center;
+  margin-bottom: 10%;
+  color: #30ad64;
 }
 
-.grid-2>#w-node-edb3231c-14b9-cce0-57b2-374fbf749cfe-2a4639ec {
+.grid-2>.project-nav-dropdown {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 5;
 }
 
-#w-node-_50de9dea-00a5-4816-deeb-de2f89c3dbfb-2a4639ec {
+.about-nav-link {
   -ms-grid-row: span 1;
   grid-row-start: span 1;
   -ms-grid-row-span: 1;
@@ -1030,7 +1031,7 @@ figcaption {
   justify-self: center;
 }
 
-#w-node-_7ca195b3-c566-5883-aaf5-47d3f164800d-2a4639ec {
+.contect-nav-link {
   -ms-grid-row: span 1;
   grid-row-start: span 1;
   -ms-grid-row-span: 1;
@@ -1041,3 +1042,12 @@ figcaption {
   grid-column-end: span 1;
 }
 
+.input-post-content {
+  color: #30ad64;
+  font-size: 2em;
+}
+
+.grey-green-btn {
+  background-color: #201f1dc5;
+  color: #30ad64;
+}
