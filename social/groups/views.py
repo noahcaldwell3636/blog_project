@@ -31,7 +31,7 @@ class JoinGroup(LoginRequiredMixin, generic.RedirectView):
         group = get_object_or_404(Group,slug=self.kwargs.get("slug"))
 
         try:
-            GroupMember.objects.create(user=self.request.user,group=group)
+            GroupMember.objects.create(user=self.request.user, group=group)
 
         except IntegrityError:
             messages.warning(self.request,("Warning, already a member of {}".format(group.name)))

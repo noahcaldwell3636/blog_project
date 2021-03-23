@@ -13,12 +13,15 @@ class PostForm(forms.ModelForm):
         model = Post
         # specify what input fields will need to be rendered as inputs on the 
         # html page 
-        fields = ('author','title', 'text')
+        fields = ('author', 'title', 'summary', 'text', 'featured',)
         # the widget variable is used to override django input form defaults
         widgets = {
             'title': forms.TextInput(attrs={
-                'class': 'textinputclass input-title'}
+                'class': 'editable medium-editor-textarea input-post-content'}
             ),
+            'summary': forms.Textarea(attrs={
+                'class': 'editable medium-editor-textarea input-post-content'
+            }),
             'text': forms.Textarea(attrs={
                 'class': 'editable medium-editor-textarea input-post-content'
             }),

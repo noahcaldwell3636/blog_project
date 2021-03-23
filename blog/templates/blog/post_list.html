@@ -22,7 +22,7 @@
     </div>
     <div class="w-col w-col-8 w-col-medium-8">
       <a href="{% url 'post_detail' pk=post.pk %}" class="blog-title-link w-inline-block">
-        <h2 class="blog-title">{{ post.title }}</h2>
+        <h2 class="post-title">{{ post.title }}</h2>
       </a>
       <div class="details-wrapper">
         <div class="post-info">{{ post.published_date }}</div>
@@ -34,7 +34,7 @@
         {% endfor %}
       </div>
       <div class="post-summary-wrapper">
-        <p class="post-summary">~Summary not implemented~</p>
+        <p class="post-summary">{{ post.summary|safe|linebreaksbr }}</p>
         <a href="{% url 'post_detail' pk=post.pk %}" class="read-more-link">Read more...</a>
       </div>
     </div>

@@ -81,10 +81,10 @@
         <div>
           <ul class="nav navbar-nav navbar-right nav_border">
             {% if user.is_authenticated %}
-            <li><a href="{% url 'post_new' %}">New Post</a></li>
-            <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            <li><a>Welcome: {{ user.username }}</a></li>
+            <li><a class="auth-nav-link" href="{% url 'post_new' %}">New Post</a></li>
+            <li><a class="auth-nav-link" href="{% url 'post_draft_list' %}">Drafts</a></li>
+            <li><a class="auth-nav-link" href="{% url 'logout' %}">Logout</a></li>
+            <li><a class="auth-nav-link">Welcome: {{ user.username }}</a></li>
             {% endif %}
           </ul>
         </div>

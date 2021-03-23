@@ -13,6 +13,9 @@ from django.views.generic import (TemplateView,ListView,
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.utils import OperationalError
+from django.urls import reverse
+from django.contrib import messages
+from django.db import IntegrityError
 
 
 
@@ -90,9 +93,10 @@ class DraftListView(LoginRequiredMixin,ListView):
         except OperationalError:
             pass
 
-class PostDeleteView(LoginRequiredMixin,DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('post_list')
+
 
 #######################################
 ## Functions that require a pk match ##

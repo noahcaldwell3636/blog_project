@@ -15,6 +15,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     featured = models.BooleanField(default=False)
     image = models.ImageField(default=join(settings.STATIC_URL, "images/logo.jpeg"), blank=False, upload_to="article_images" )
+    summary = models.TextField(default="I must have been too lazy to make a summary...")
 
     def publish(self):
         self.published_date = timezone.now()

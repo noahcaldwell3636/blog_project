@@ -532,7 +532,7 @@ figcaption {
   background-color: #201f1d;
 }
 
-.blog-title {
+.post-title {
   margin-top: 0px;
   margin-bottom: 0px;
   color: #d4d4d4;
@@ -1012,6 +1012,10 @@ figcaption {
   color: #30ad64;
 }
 
+.auth-nav-link {
+  color: #30ad64;
+}
+
 .grid-2>.project-nav-dropdown {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
@@ -1047,7 +1051,25 @@ figcaption {
   font-size: 2em;
 }
 
+.input-post-title {
+  color: #30ad64;
+  font-size: 3em;
+}
+
+.post-title {
+  color: #30ad64;
+  font-size: 3em;
+}
+
 .grey-green-btn {
   background-color: #201f1dc5;
   color: #30ad64;
+}
+
+.post-text-content {
+  font-size: 1.5em;
+}
+
+.white-text {
+  color: white;
 }
