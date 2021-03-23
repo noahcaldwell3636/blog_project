@@ -1073,3 +1073,8 @@ figcaption {
 .white-text {
   color: white;
 }
+
+#matrix {
+  position: absolute;
+  opacity: .5;
+}
