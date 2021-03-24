@@ -35,6 +35,32 @@
         <div class="button-wrapper">
           <a href="{% url 'post_list' %}" class="button w-button">← All posts</a>
         </div>
+
+        <div class="terminal-container">
+          <div class="terminal-window">
+            <div class="terminal-bar">
+              <div class="terminal-left">
+                <button class="terminal-close"></button><span class="terminal-content">x</span><button class="terminal-min"></button><span class="terminal-content">–</span><button class="terminal-max"></button><span class="terminal-content">+</span>
+              </div>
+              <div class="terminal-title">
+                {{ request.user }}
+              </div>
+              <div class="terminal-right"></div>
+            </div>
+            <div class="terminal">
+              <div class="terminal-output"></div>
+              <div class="terminal-input">
+                <span class="terminal-path"><i class="terminal-blue">~ / </i><i class="terminal-red">❯</i><i class="terminal-yellow">❯</i><i class="terminal-green">❯</i></span>
+                <form>
+                  <input autocomplete="off" autofocus="" id="cmd" tabIndex="1" />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="{% static 'blog/js/terminal_input.js' %}" type="text/javascript"></script>
+
+
         <!-- MOBILE SIDEBAR -->
         <div class="sidebar-on-mobile">
           <div class="white-wrapper"><img src="{% static 'blog/images/avi.jpg' %}" alt="" class="circle-profile">

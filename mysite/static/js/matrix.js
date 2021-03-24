@@ -1,7 +1,7 @@
 const C = document.getElementById("matrix"),
   $ = C.getContext("2d"),
-  W = (C.width = window.innerWidth),
-  H = (C.height = window.innerHeight);
+  W = (C.width = document.body.clientWidth),
+  H = (C.height = document.body.clientWidth);
 
 const str = "А+Б0В-Г1Д=Е2Ё Ж3З И4Й К5Л М6Н О7П Р8С Т9У Ф!Х Ц?Ч Ш.ЩЪ,Ы Ь:ЭЮ;Я",
   matrix = str.split("");
