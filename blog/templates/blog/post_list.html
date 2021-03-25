@@ -17,7 +17,7 @@
   <div class="w-row">
     <div class="w-col w-col-4 w-col-medium-4">
       <a href="{% url 'post_detail' pk=post.pk %}" class="blog-image w-inline-block">
-        <img src="{{ post.image }}" alt="No image foud for this post...">
+        <img src="{{ post.image.url }}" alt="No image foud for this post...">
       </a>
     </div>
     <div class="w-col w-col-8 w-col-medium-8">

@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from . import views
 from django.views.decorators.http import require_POST
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$',views.PostListView.as_view(),name='post_list'),
@@ -14,4 +16,4 @@ urlpatterns = [
     url('^tag_form/$', require_POST(views.AddTagFormView.as_view()), name='my_form_view_url'),
     url(r'^post/(?P<pk>\d+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
     url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
