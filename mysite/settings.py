@@ -16,12 +16,11 @@ import os
 ########################################################################
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
 BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
-FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
 BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
-SOCIAL_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/templates')
-ACCOUNTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
-GROUPS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/groups/templates')
-POSTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/posts/templates')
+# SOCIAL_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/templates')
+# ACCOUNTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
+# GROUPS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/groups/templates')
+# POSTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/posts/templates')
 ########################################################################
 
 
@@ -55,9 +54,9 @@ INSTALLED_APPS = [
     # CREATED APPS
     'blog', # Personal/admin annco
     'social', # contains all of the basic user's functionality
-    'social.accounts', # non-admin/basic user accounts
-    'social.groups', # reddit-like pages for the users to interact
-    'social.posts', # text or media posts for communication
+    # 'social.accounts', # non-admin/basic user accounts
+    # 'social.groups', # reddit-like pages for the users to interact
+    # 'social.posts', # text or media posts for communication
 ]
 
 MIDDLEWARE = [
@@ -82,10 +81,10 @@ TEMPLATES = [
             BASE_TEMPLATE_DIR,
             BLOG_TEMPLATE_DIR,
             # social apps
-            SOCIAL_TEMPLATE_DIR,
-            ACCOUNTS_TEMPLATE_DIR,
-            GROUPS_TEMPLATE_DIR,
-            POSTS_TEMPLATE_DIR,
+            # SOCIAL_TEMPLATE_DIR,
+            # ACCOUNTS_TEMPLATE_DIR,
+            # GROUPS_TEMPLATE_DIR,
+            # POSTS_TEMPLATE_DIR,
         ],
         'APP_DIRS': True,
         'OPTIONS': {

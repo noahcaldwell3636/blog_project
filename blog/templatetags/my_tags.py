@@ -27,8 +27,10 @@ def sidebar():
     featured_list = Post.objects.filter(featured=True)
     return {'featured_list': featured_list}
 
+@register.inclusion_tag('blog/_social_navigation.html')
+def social_navigation():
+    return {}
 
 @register.inclusion_tag('blog/_social_link_group.html')
 def social_link_group():
-    featured_list = Post.objects.filter(featured=True)
-    return {'featured_list': featured_list}
+    return {}

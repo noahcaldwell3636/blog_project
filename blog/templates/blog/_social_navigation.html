@@ -1,0 +1,13 @@
+<!-- social navigation -->
+{% if user.is_authenticated %}
+<nav role="navigation" class="navigation-menu w-nav-menu">
+    <div class=''>
+        <ul class='nav navbar-nav navbar-left'>
+            <li><a href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
+            <!-- <li><a href="url 'groups:all'" class="btn btn-simple">Groups</a></li> -->
+            <!-- <li><a href="url 'groups:create'" class="btn btn-simple">Create Group</a></li> -->
+            <li><a href="{% url 'admin-logout' %}" class="btn btn-simple">Log out</a></li>
+        </ul>
+    </div>
+</nav>
+{% endif %}
