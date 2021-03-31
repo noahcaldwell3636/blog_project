@@ -49,8 +49,9 @@
 <body>
   <div data-collapse="none" data-animation="default" data-duration="400" role="banner" class="navbar w-nav">
     <div class="container w-container">
+
+      <!-- basic navigation -->
       <nav role="navigation" class="navigation-menu w-nav-menu blog_navigation">
-        <!-- basic navigation -->
         <div class="w-layout-grid grid-2">
           <a href="{% url 'post_list' %}" class="navigation-link w-nav-link home-nav-link">Home</a>
           <a href="{% url 'about' %}" class="navigation-link w-nav-link about-nav-link">About</a>
@@ -58,6 +59,7 @@
           <a href="#" class="topics-nav-dropdown">Topics ⇩</a>
         </div>
       </nav>
+
       <!-- authenicated blog post management options -->
       {% if user.is_authenticated %}
       <nav role="navigation" class="navigation-menu w-nav-menu user_navigation">
