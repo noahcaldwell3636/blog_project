@@ -7,17 +7,35 @@ class PostForm(forms.ModelForm):
     Creates a form for the admin to fillout when creating a new post. The input
     fields will be used to create a post model.
     '''
+    # basically did te init func to pass in the username of the person logged in
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop("request")
+        super(PostForm, self).__init__(*args, **kwargs)
+        subattrs = self.fields['author'].widget.attrs
+        subattrs['value'] = self.request.user.username  
+        print(subattrs) 
+        
     # the input fields in Meta will inherit properties from the ModelForm class 
     class Meta:
         # specify model for the ModelForm class
         model = Post
         # specify what input fields will need to be rendered as inputs on the 
         # html page 
-        fields = ('author', 'title', 'summary', 'text', 'featured',)
+        fields = ('author', 'title', 'image', 'featured', 'summary', 'text', )
         # the widget variable is used to override django input form defaults
+        labels = {
+
+        }
+        
         widgets = {
+            'author': forms.TextInput(attrs={
+                'class': 'editable medium-editor-textarea input-post-content',
+                'disabled': "true",
+                }
+            ),
             'title': forms.TextInput(attrs={
-                'class': 'editable medium-editor-textarea input-post-content'}
+                'class': 'editable medium-editor-textarea input-post-content',
+                }
             ),
             'summary': forms.Textarea(attrs={
                 'class': 'editable medium-editor-textarea input-post-content'

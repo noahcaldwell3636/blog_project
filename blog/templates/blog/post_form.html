@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class='white-wrapper'>
     <h1 class="white-text">New post</h1>
 
     <form method="POST" class="post-form">
@@ -8,7 +9,8 @@
     {{form.as_p}}
     <button type="submit" class="save btn btn-default">Save Draft</button>
     </form>
+</div>
 
-    <script>var editor = new MediumEditor('.editable');</script>
+<script>var editor = new MediumEditor('.editable');</script>
 
 {% endblock %}

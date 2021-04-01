@@ -1,46 +1,36 @@
 {% extends 'base.html' %}
-{% load bootstrap3 %}
 {% load static %}
+
 {% block content %}
+
 {% for post in post_list %}
-<!-- <div class="post-wrapper">
-  <div class="white-wrapper">
-    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-      <div class="date">
-        <p>Published on: {{ post.published_date|date:"M j, Y"}}</p>
+  <div class="post-content">
+    <div class="w-row">
+      <div class="w-col w-col-4 w-col-medium-4">
+        <a href="{% url 'post_detail' pk=post.pk %}" class="blog-image w-inline-block">
+          <img class="fit-img" src="{{ post.image.url }}" alt="No image foud for this post...">
+        </a>
       </div>
-      <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a>
-  </div>
-</div> -->
-
-<div class="post-content">
-  <div class="w-row">
-    <div class="w-col w-col-4 w-col-medium-4">
-      <a href="{% url 'post_detail' pk=post.pk %}" class="blog-image w-inline-block">
-        <img class="fit-img" src="{{ post.image.url }}" alt="No image foud for this post...">
-      </a>
-    </div>
-    <div class="w-col w-col-8 w-col-medium-8">
-      <a href="{% url 'post_detail' pk=post.pk %}" class="blog-title-link w-inline-block">
-        <h2 class="post-title">{{ post.title }}</h2>
-      </a>
-      <div class="details-wrapper">
-        <div class="post-info">{{ post.published_date }}</div>
-        <div class="post-info">|</div>
-        {% for tag in post.tag.all %}
-          <a href="#" class="post-info when-link">
-            {{ tag.title }}
-          </a>
-        {% endfor %}
-      </div>
-      <div class="post-summary-wrapper post-summary">
-        {{ post.summary|safe|linebreaksbr }}
-        <a href="{% url 'post_detail' pk=post.pk %}" class="read-more-link">Read more...</a>
+      <div class="w-col w-col-8 w-col-medium-8">
+        <a href="{% url 'post_detail' pk=post.pk %}" class="blog-title-link w-inline-block">
+          <h2 class="post-title">{{ post.title }}</h2>
+        </a>
+        <div class="details-wrapper">
+          <div class="post-info">{{ post.published_date }}</div>
+          <div class="post-info">|</div>
+          {% for tag in post.tag.all %}
+            <a href="#" class="post-info when-link">
+              {{ tag.title }}
+            </a>
+          {% endfor %}
+        </div>
+        <div class="post-summary-wrapper post-summary">
+          {{ post.summary|safe|linebreaksbr }}
+          <a href="{% url 'post_detail' pk=post.pk %}" class="read-more-link">Read more...</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-
 {% endfor %}
+
 {% endblock %}

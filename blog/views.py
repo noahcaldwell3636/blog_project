@@ -58,6 +58,11 @@ class CreatePostView(LoginRequiredMixin, CreateView):
     form_class = PostForm
     model = Post
 
+    def get_form_kwargs(self):
+        kwargs = super(CreatePostView, self).get_form_kwargs()
+        kwargs.update({'request': self.request})
+        return kwargs
+
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     """View for editing and updating an exisiting post.
