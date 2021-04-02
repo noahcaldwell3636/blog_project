@@ -22,11 +22,10 @@ class Post(models.Model):
         self.save()
 
     def get_absolute_url(self):
-        return reverse("post_detail",kwargs={'pk':self.pk})
+        return reverse("post_detail", kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.title
-
 
 
 class Comment(models.Model):

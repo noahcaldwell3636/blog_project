@@ -11,10 +11,9 @@ class PostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")
         super(PostForm, self).__init__(*args, **kwargs)
-        subattrs = self.fields['author'].widget.attrs
-        subattrs['value'] = self.request.user.username  
-        print(subattrs) 
-        
+        widget_subattrs = self.fields['author'].widget.attrs
+        widget_subattrs['value'] = self.request.user.username
+
     # the input fields in Meta will inherit properties from the ModelForm class 
     class Meta:
         # specify model for the ModelForm class
@@ -22,26 +21,27 @@ class PostForm(forms.ModelForm):
         # specify what input fields will need to be rendered as inputs on the 
         # html page 
         fields = ('author', 'title', 'image', 'featured', 'summary', 'text', )
-        # the widget variable is used to override django input form defaults
-        labels = {
-
-        }
-        
+        # customize widgets... labels are customized in the html and css files        
         widgets = {
             'author': forms.TextInput(attrs={
-                'class': 'editable medium-editor-textarea input-post-content',
-                'disabled': "true",
+                    'class': 'editable medium-editor-textarea input-post-content margin-bottom-1per',
+                    'disabled': "true",
                 }
             ),
             'title': forms.TextInput(attrs={
-                'class': 'editable medium-editor-textarea input-post-content',
+                    'class': 'editable medium-editor-textarea input-post-content margin-bottom-1per',
+                }
+            ),
+            # 'image': forms.ImageField(),
+            'featured': forms.CheckboxInput(attrs={
+                    'class': 'size-check margin-bottom-1per vert-center'
                 }
             ),
             'summary': forms.Textarea(attrs={
-                'class': 'editable medium-editor-textarea input-post-content'
+                'class': 'editable medium-editor-textarea input-post-content margin-bottom-1per'
             }),
             'text': forms.Textarea(attrs={
-                'class': 'editable medium-editor-textarea input-post-content'
+                'class': 'editable medium-editor-textarea input-post-content margin-bottom-1per' 
             }),
         }
 
