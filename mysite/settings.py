@@ -146,13 +146,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
-# 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# where 'collectstatic' send all the staic files, not needed until deployment 
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 BASE_STATIC_DIR = os.path.join(BASE_DIR, 'mysite/static')
-FLOOD_STATIC_DIR = os.path.join(BASE_DIR, 'flood_data/static')
 BLOG_STATIC_DIR = os.path.join(BASE_DIR, 'blog/static')
 SOCIAL_STATIC_DIR = os.path.join(BASE_DIR, 'social/static')
 
