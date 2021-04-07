@@ -5,35 +5,31 @@
     <h1 class="white-text">New post</h1>
 
     <form method="POST" class="post-form">
+            
         {% csrf_token %}
 
-        {{ form.author.errors }}
-        <label class="white inline-block" for="{{ form.author.id_for_label }}">Author: </label>
+        <!-- <label class="white inline-block" for="{{ form.author.id_for_label }}">Author: {{ request.user.username }} </label> -->
+        <label class="white" for="{{ form.author.id_for_label }}">Author: (disabled) </label>
         {{ form.author }}
 
-        {{ form.title.errors }}
         <label class="white" for="{{ form.title.id_for_label }}">Title: </label>
         {{ form.title }}
 
-        {{ form.image.errors }}
         <label class="white img-margin" for="{{ form.image.id_for_label }}">Image: </label>
         <div class="margin-bottom-1per">
             {{ form.image }}
         </div>
 
-        {{ form.featured.errors }}
         <label class="white inline-block margin-bottom-1per" for="{{ form.featured.id_for_label }}">Featured: </label>
         {{ form.featured }}
 
-        {{ form.summary.errors }}
         <label class="white" for="{{ form.summary.id_for_label }}">Summary: </label>
         {{ form.summary }}
 
-        {{ form.text.errors }}
         <label class="white" for="{{ form.text.id_for_label }}">Content: </label>
         {{ form.text }}
 
-        <button type="submit" class="save btn btn-default">Save Draft</button>
+        <input type="submit" class="save btn btn-default" value="Save Draft">
 
     </form>
 </div>

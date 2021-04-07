@@ -54,7 +54,8 @@ class AddTagFormView(FormView):
 
 class CreatePostView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
-    redirect_field_name = 'post_detail.html'
+    redirect_field_name = reverse_lazy('post_list')
+    success_url = reverse_lazy('post_list')
     form_class = PostForm
     model = Post
 
@@ -62,6 +63,8 @@ class CreatePostView(LoginRequiredMixin, CreateView):
         kwargs = super(CreatePostView, self).get_form_kwargs()
         kwargs.update({'request': self.request})
         return kwargs
+
+   
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):

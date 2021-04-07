@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from django.core.management.utils import get_random_secret_key
 
 # Base and template directories
 ########################################################################
@@ -31,7 +32,7 @@ BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
 SECRET_KEY = 'hzetdi)f#0okx$zu5y=7aae$9e6q25#+wmlu%)#=1s9h-m5s&_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = "True"
 
 ALLOWED_HOSTS = []
 
@@ -48,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # NON-DEFAULT INSTALLED APPS 
     'django.contrib.humanize', # tools for human readable data 
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
+    # 'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
     'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
     'colorfield',
     # CREATED APPS
@@ -165,7 +166,4 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 # allows django to use frames within the html for the dash applications
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-# allows for forever-cachable files and compression support
-
-DEBUG = True
+# X_FRAME_OPTIONS = 'SAMEORIGIN'
