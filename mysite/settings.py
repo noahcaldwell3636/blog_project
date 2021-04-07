@@ -11,12 +11,15 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from django.core.management.utils import get_random_secret_key
+import sys
+import dj_database_url
 
 # Base and template directories
 ########################################################################
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
 BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
-FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
+# FLOOD_TEMPLATE_DIR = os.path.join(BASE_DIR,'flood_data/templates')
 BLOG_TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
 SOCIAL_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/templates')
 ACCOUNTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/accounts/templates')
@@ -29,13 +32,14 @@ POSTS_TEMPLATE_DIR = os.path.join(BASE_DIR, 'social/posts/templates')
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hzetdi)f#0okx$zu5y=7aae$9e6q25#+wmlu%)#=1s9h-m5s&_'
+# SECRET_KEY = 'hzetdi)f#0okx$zu5y=7aae$9e6q25#+wmlu%)#=1s9h-m5s&_'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 # Application definition
 
@@ -47,16 +51,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # NON-DEFAULT INSTALLED APPS 
     'django.contrib.humanize', # tools for human readable data 
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
-    'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
+    # 'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
+    # 'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
+
     # CREATED APPS
     'blog', # Personal/admin annco
-       'social', # contains all of the basic user's functionality
-    'social.accounts', # non-admin/basic user accounts
-    'social.groups', # reddit-like pages for the users to interact
-    'social.posts', # text or media posts for communication
+    'social', # contains all of the basic user's functionality
+        'social.accounts', # non-admin/basic user accounts
+        'social.groups', # reddit-like pages for the users to interact
+        'social.posts', # text or media posts for communication
+
 ]
 
 MIDDLEWARE = [
@@ -79,7 +86,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_TEMPLATE_DIR,
-            FLOOD_TEMPLATE_DIR,
+            # FLOOD_TEMPLATE_DIR,
             BLOG_TEMPLATE_DIR,
             # social apps
             SOCIAL_TEMPLATE_DIR,
@@ -104,12 +111,19 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
     }
-}
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -150,18 +164,12 @@ USE_TZ = True
 # 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 BASE_STATIC_DIR = os.path.join(BASE_DIR, 'mysite/static')
 FLOOD_STATIC_DIR = os.path.join(BASE_DIR, 'flood_data/static')
 BLOG_STATIC_DIR = os.path.join(BASE_DIR, 'blog/static')
 SOCIAL_STATIC_DIR = os.path.join(BASE_DIR, 'social/static')
-
-STATICFILES_DIRS = [
-    ('base', BASE_STATIC_DIR),
-    ('flood_data', FLOOD_STATIC_DIR),
-    ('blog', BLOG_STATIC_DIR),
-    ('social', SOCIAL_STATIC_DIR),
-]
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -169,5 +177,3 @@ LOGOUT_REDIRECT_URL = '/'
 # allows django to use frames within the html for the dash applications
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 # allows for forever-cachable files and compression support
-
-DEBUG = True
