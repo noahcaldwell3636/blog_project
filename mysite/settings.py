@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     # NON-DEFAULT INSTALLED APPS 
     'django.contrib.humanize', # tools for human readable data 
     # 'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
-    'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
+    # 'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
 
     # CREATED APPS
     'blog', # Personal/admin annco
