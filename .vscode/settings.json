@@ -1,5 +1,4 @@
 {
-    "editor.rulers": [
-    80,
-    ]
+    "editor.rulers": [80],
+    "workbench.tree.indent": 30,
 }

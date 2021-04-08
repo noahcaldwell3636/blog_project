@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from blog.models import Post, Comment
 from django.utils import timezone
-from blog.forms import PostForm, CommentForm, TagForm
+from blog.forms import PostForm, CommentForm
 
 from django.views.generic import (TemplateView,ListView,
                                   DetailView,CreateView,
@@ -48,9 +48,6 @@ class PostDetailView(DetailView):
         return context
 
 
-class AddTagFormView(FormView):
-    form_class = TagForm
-
 
 class CreatePostView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
@@ -58,11 +55,6 @@ class CreatePostView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('post_list')
     form_class = PostForm
     model = Post
-
-    def get_form_kwargs(self):
-        kwargs = super(CreatePostView, self).get_form_kwargs()
-        kwargs.update({'request': self.request})
-        return kwargs
 
    
 
@@ -78,15 +70,6 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     redirect_field_name = 'post_detail.html'
     form_class = PostForm
     model = Post
-
-
-    def get_context_data(self, **kwargs):
-            context = super(UpdateView, self).get_context_data(**kwargs)
-            try:
-                context['tag_form'] = TagForm
-            except OperationalError:
-                pass
-            return context
 
 
 class DraftListView(LoginRequiredMixin,ListView):

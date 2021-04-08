@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class='white-wrapper'>
@@ -9,7 +10,8 @@
         {% csrf_token %}
 
         <!-- <label class="white inline-block" for="{{ form.author.id_for_label }}">Author: {{ request.user.username }} </label> -->
-        <label class="white" for="{{ form.author.id_for_label }}">Author: (disabled) </label>
+        <label class="white" for="{{ form.author.id_for_label }}">Author: </label>
+        <input type="text" value="{{ request.user.username }}" disabled class="editable medium-editor-textarea input-post-content margin-bottom-1per black-bg medium-editor-element medium-editor-placeholder" maxlength="50" contenteditable="false" >
         {{ form.author }}
 
         <label class="white" for="{{ form.title.id_for_label }}">Title: </label>
@@ -29,11 +31,23 @@
         <label class="white" for="{{ form.text.id_for_label }}">Content: </label>
         {{ form.text }}
 
+        <label class="white" for="{{ form.tags.id_for_label }}">Tags: </label>
+        {{ form.tags }}
+        <!-- <input type="text" id="id_tags" data-role="tagsinput" class="form-control" name="tags"> -->
+
         <input type="submit" class="save btn btn-default" value="Save Draft">
 
     </form>
+
+    <div class="white">
+        {% for error_field, error_message in form.errors.items %}
+            {{ error_field|striptags }}: {{ error_message|striptags }}
+        {% endfor %}
+    </div>
+        
 </div>
 
+<script src="{% static 'blog/js/bootstrap-tagsinput.js' %}"></script>
 <script>var editor = new MediumEditor('.editable');</script>
 
 {% endblock %}

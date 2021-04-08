@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment, Tag
+from .models import Post, Comment
 from django.contrib.auth.models import User
 
 
@@ -8,13 +8,9 @@ class PostForm(forms.ModelForm):
     Creates a form for the admin to fillout when creating a new post. The input
     fields will be used to create a post model.
     '''
-    # basically did te init func to pass in the username of the person logged in
     def __init__(self, *args, **kwargs):
-        
-        self.request = kwargs.pop("request")
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['author'].widget.attrs['value'] = User.objects.get(username=self.request.user.username)        
-        
+        self.initial['author'] = '1'
 
     # the input fields in Meta will inherit properties from the ModelForm class 
     class Meta:
@@ -22,12 +18,13 @@ class PostForm(forms.ModelForm):
         model = Post
         # specify what input fields will need to be rendered as inputs on the 
         # html page 
-        fields = ('author', 'title', 'image', 'featured', 'summary', 'text', )
+        fields = ('author', 'title', 'image', 'featured', 'summary', 'text', 'tags',)
         # customize widgets... labels are customized in the html and css files        
-        widgets = {
-            'author': forms.TextInput(attrs={
-                    'disabled': "true",
-                    'class': "editable medium-editor-textarea input-post-content margin-bottom-1per black-bg"
+        widgets = { 
+            'author': forms.Select (attrs={
+                    'class': '',
+                    'hidden': 'true',
+                    'value': '1',
                 }
             ),
             'title': forms.TextInput(attrs={
@@ -44,22 +41,11 @@ class PostForm(forms.ModelForm):
             'text': forms.Textarea(attrs={
                 'class': 'editable medium-editor-textarea input-post-content margin-bottom-1per black-bg',
             }),
-        }
-
-class TagForm(forms.ModelForm):
-    '''
-    Creates a comment form from the commment model. Inputs will be generated for
-    use in html, that will then be submitted to create a comment model in the 
-    database.
-    '''
-    class Meta:
-        # choose what model will be created in the form
-        model = Tag
-        # choose what input are needed from the user
-        fields = ('title', )
-        # ovverride defaults for the input forms
-        widgets = {
-            '': forms.TextInput(attrs={'class': 'form-control'}),
+            'tags': forms.TextInput(attrs={
+                'class': 'form-control',
+                'data-role': 'tagsinput',
+                'name': 'tags',
+            }),
         }
 
 

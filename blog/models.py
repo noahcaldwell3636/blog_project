@@ -4,6 +4,7 @@ from django.urls import reverse
 from colorfield.fields import ColorField
 from django.conf import settings
 from os.path import join
+from taggit.managers import TaggableManager
 
 
 
@@ -16,6 +17,7 @@ class Post(models.Model):
     featured = models.BooleanField(default=False)
     image = models.ImageField(default=join(settings.STATIC_URL, "images/logo.jpeg"), blank=False, upload_to="article_images" )
     summary = models.TextField(default="I must have been too lazy to make a summary...")
+    tags = TaggableManager()
     
     
     def publish(self):
@@ -42,18 +44,6 @@ class Comment(models.Model):
     def __str__(self):
         return self.text
 
-
-class Tag(models.Model):
-    title = models.CharField(max_length=250, blank=True)
-    posts = models.ManyToManyField("Post", blank=True)
-
-    class Meta:
-        verbose_name = "tag"
-        verbose_name_plural = "tags"
-        ordering = ['title']
-
-    def __str__(self):
-        return self.title
 
 
 

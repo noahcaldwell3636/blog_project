@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize', # tools for human readable data 
     # 'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
     'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
-    'colorfield',
+    'taggit',
     # CREATED APPS
     'blog', # Personal/admin annco
     'social', # contains all of the basic user's functionality
@@ -165,3 +165,5 @@ LOGOUT_REDIRECT_URL = '/'
 
 # allows django to use frames within the html for the dash applications
 # X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+TAGGIT_CASE_INSENSITIVE = True
