@@ -16,9 +16,9 @@
       <a class="btn btn-default grey-green-btn" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
       {% endif %}
       <div class="post-info">|</div>
-      {% for tag in post.tag.all %}
+      {% for tag in post.tags.all %}
       <a href="#" class="post-info when-link">
-        {{ tag.title }}
+        {{ tag }}
       </a>
       {% endfor %}
     </div>
