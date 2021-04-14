@@ -16,7 +16,7 @@ from django.db.utils import OperationalError
 from django.urls import reverse
 from django.contrib import messages
 from django.db import IntegrityError
-
+from django.http import HttpRequest, HttpResponse
 
 
 class AboutView(TemplateView):
@@ -55,6 +55,12 @@ class CreatePostView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('post_list')
     form_class = PostForm
     model = Post
+
+    # def form_valid(self, form, request):
+    #     self.object = form.save(commit=False)
+    #     self.object.image = request
+    #     self.object.save()
+    #     return super(CreateView, self).form_valid(form)
 
    
 

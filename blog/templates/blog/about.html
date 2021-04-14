@@ -1,17 +1,32 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-<div class="container content">
-    <h1>Welcome to my traphouse</h1>
-    <p>
-        Thanks for visiting my {insert domain}! An open source version of OnlyFans. Just kidding. This 
-        website is what will be an accumulation of my future (and some past) projects. The 
-        core purpose of this site is to serve as a personal hub. For now, it will just my mine.
-        As I porgress, I do intend to provide functionality that I found helpful to site users.
 
-        As much as I want to spill out all my plans for the future of this site, this page will 
-        outline the approximate current state of the website. Refer below for a break down of the 
-        different applications hosted on this site.
-    </p>
+
+<div class="white-wrapper">
+
+    <div class="title_container content">
+        <p class='typing-animation'>
+            Thanks for visiting my 
+            <span class="typed-text"></span>
+            <span class="cursor">&nbsp;</span>
+        </p>
+    </div>
+    <div class="about-paragraph">
+        Welcome to my personal site, here I like to display my personal 
+        projects and research. So far the only project I have hosted
+        online is this website. More on the way, I have a James River flood
+        forecasting dash board that is in an unfinished/broken state. I'd 
+        love to put the blackjack game I created in the Python library 
+        , Tkinter, but I don't believe there is a reasonable way to put a
+        tkinter application in a browser. I would like to implement some
+        casino games on the site in the future. For now, sit tight and maybe
+        read a 
+        <a href="{% url 'post_list' %}" class="about_link">blog post</a> 
+        .
+    </div>
 </div>
+
+<script src="{% static 'blog/js/about_title.js' %}"></script>
 
 {% endblock %}

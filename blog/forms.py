@@ -32,11 +32,11 @@ class PostForm(forms.ModelForm):
                 }
             ),
             'featured': forms.CheckboxInput(attrs={
-                    'class': 'size-check margin-bottom-1per vert-center'
+                    'class': 'size-check margin-bottom-1per vert-center black-bg'
                 }
             ),
             'summary': forms.Textarea(attrs={
-                'class': 'editable medium-editor-textarea input-post-content margin-bottom-1per black-bg',
+                'class': 'editable medium-editor-textarea input-post-content margin-bottom-1per black-bg summary-font',
             }),
             'text': forms.Textarea(attrs={
                 'class': 'editable medium-editor-textarea input-post-content margin-bottom-1per black-bg',
