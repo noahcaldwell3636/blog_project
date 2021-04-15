@@ -1,0 +1,52 @@
+  /* animation: name, duration, timing func, delay, iteration-count, direction */
+.sedgwick_ave {
+    font-family: 'Sedgwick Ave Display', cursive;
+}
+
+.sedgwick_ave {
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+.two_em {
+    font-size: 2em;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.myred {
+    color: rgb(221, 50, 50);
+}
+
+.mygreen {
+    color: rgb(48, 173, 100);
+}
+
+.green_pulse {
+    animation: green_pulse 6s ease-in 3;
+}
+
+@keyframes green_pulse {
+    0% {
+        color: rgb(48, 173, 100, 1);
+    }
+    50% {
+        color: rgba(48, 173, 100, .6);
+    }
+    100% {
+        color:  rgb(48, 173, 100, 1);
+    }
+}
+
+
+
+.white-wrapper {
+    padding: 20px;
+    margin-bottom: 1vh;
+    border: 5px solid #d4d4d4;
+    border-radius: 5px;
+    background-color: #221e1dee;
+    color: #d4d4d4;
+    box-shadow: .3em .4em 1.5em rgba(0, 0, 0, 0.75);
+}

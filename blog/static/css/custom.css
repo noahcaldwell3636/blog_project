@@ -549,16 +549,6 @@ figcaption {
   line-height: 26px;
 }
 
-.white-wrapper {
-  padding: 20px;
-  margin-bottom: 1vh;
-  border: 5px solid #d4d4d4;
-  border-radius: 5px;
-  background-color: #221e1dee;
-  color: #d4d4d4;
-  box-shadow: .3em .4em 1.5em rgba(0, 0, 0, 0.9)
-}
-
 .circle-profile {
   display: block;
   width: 70%;

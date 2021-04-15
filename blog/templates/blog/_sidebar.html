@@ -2,23 +2,34 @@
 <div class="white-wrapper">
     <img src="{% static 'blog/images/avi.jpg' %}" alt="" class="circle-profile">
     <p class="site-description">
-        Programming can feel like you're banging your head against a 
-        brick wall repetitively and getting the same result. Other times its 
-        like your navigating a virtual world that you created... my head hurts. 
+        Programming sometimes feel like you're repetitively banging your 
+        head against a brick wall hoping the wall will plumment. All so
+        you can continue your journey down a path that will surely have more
+        walls.  
+    </p>
+    <p class="site-description">
+        Other times, we feel like a microcosmic god. In the sense that 'god' is
+        synomonus with 'creater'. We are practicing our divine right to 
+        observe and manipulate our virtual world. 
+    </p>
+    <p class="site-description">
+        My head hurts.
     </p>
     <div class="grey-rule"></div>
-    <h2 class="small-heading">Featured Posts:</h2>
+    <h2 class="mygreen underline two_em">Featured Posts:</h2>
     <div class="feature-posts-list w-dyn-list">
         {% if featured_list %}
         <div role="list" class="w-dyn-items">
             {% for feature in featured_list %}
             <div role="listitem" class="w-dyn-item">
-                <a href="{% url 'post_detail' pk=feature.pk %}" class="small-post-link">{{ feature.title }}</a>
+                <a href="{% url 'post_detail' pk=feature.pk %}" class="small-post-link sedgwick_ave mygreen">
+                    ~ ~ ~ {{ feature.title }} ~ ~ ~ 
+                </a>
             </div>
             {% endfor %}
         </div>
         {% else %}
-        <p>No items found.</p>
+            <p>No items found.</p>
         {% endif %}
     </div>
     <div class="grey-rule"></div>

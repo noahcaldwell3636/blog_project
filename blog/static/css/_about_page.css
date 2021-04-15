@@ -24,7 +24,7 @@
   margin-left: 0.1rem;
   width: 3px;
   /* animation: name, duration, timing func, delay, iteration-count, direction */
-  animation: blink 1s infinite, spin 1s ease-in;
+  animation: blink 1s infinite, spin 2s ease-in;
 }
 
 .end_cursor {
@@ -32,7 +32,7 @@
   background-color: #ccc;
   margin-left: 0.1rem;
   width: 3px;
-  animation: spin_again 1s ease-in, smaller 1s ease-in 1s forwards;
+  animation: spin_again .5s ease-in, smaller .5s ease-in 1s forwards;
 }
 
 @keyframes blink {
@@ -70,10 +70,7 @@
   padding-left: 2em;
 }
 
-.about_link {
-  color: #dd3232;
-  font-family: 'Sedgwick Ave', cursive;
-}
+
 
 
 

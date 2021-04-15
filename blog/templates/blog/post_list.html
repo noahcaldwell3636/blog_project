@@ -4,7 +4,7 @@
 {% block content %}
 
 {% for post in post_list %}
-  <div class="post-content">
+  <div class="post-content white-wrapper">
     <div class="w-row">
       <div class="w-col w-col-4 w-col-medium-4">
         <a href="{% url 'post_detail' pk=post.pk %}" class="blog-image w-inline-block">
