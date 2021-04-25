@@ -167,3 +167,7 @@ LOGOUT_REDIRECT_URL = '/'
 # X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 TAGGIT_CASE_INSENSITIVE = True
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'blog_media')
+MEDIA_URL = '/blog_media/'
+

@@ -14,12 +14,8 @@ class PostForm(forms.ModelForm):
 
     # the input fields in Meta will inherit properties from the ModelForm class 
     class Meta:
-        # specify model for the ModelForm class
-        model = Post
-        # specify what input fields will need to be rendered as inputs on the 
-        # html page 
+        model = Post 
         fields = ('author', 'title', 'image', 'featured', 'summary', 'text', 'tags',)
-        # customize widgets... labels are customized in the html and css files        
         widgets = { 
             'author': forms.Select (attrs={
                     'class': '',

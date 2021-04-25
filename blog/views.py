@@ -17,6 +17,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.db import IntegrityError
 from django.http import HttpRequest, HttpResponse
+from django.core.files.storage import FileSystemStorage
 
 
 class AboutView(TemplateView):
@@ -56,11 +57,11 @@ class CreatePostView(LoginRequiredMixin, CreateView):
     form_class = PostForm
     model = Post
 
-    # def form_valid(self, form, request):
-    #     self.object = form.save(commit=False)
-    #     self.object.image = request
-    #     self.object.save()
-    #     return super(CreateView, self).form_valid(form)
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.instance.image = self.request.FILES['image']
+        form.instance.save()
+        return super().form_valid(form)
 
    
 
