@@ -1,4 +1,11 @@
 {
+    // add a line in the text editor at 80 charactors to help the writer
+    // stay in accordance with pep8 
     "editor.rulers": [80],
-    "workbench.tree.indent": 30,
+    // how much vscode will indent inner directories in its file explorer
+    "workbench.tree.indent": 20,
+    // disgnates python path
+    "python.pythonPath": "virtualenv\\scripts\\python.exe",
+    // activates virtual environment when you open up a new terminal in vscode
+    "python.terminal.activateEnvInCurrentTerminal": true,
 }
