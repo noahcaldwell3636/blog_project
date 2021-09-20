@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('accounts/', include('django.contrib.auth.urls'), name="logout"),
     url(r'', include('blog.urls')),
-    # url('social/', include('social.urls')),
+    url('social/', include('social.urls')),
 ]
 
 if settings.DEBUG:

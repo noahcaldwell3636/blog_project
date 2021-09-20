@@ -8,4 +8,16 @@
     "python.pythonPath": "virtualenv\\scripts\\python.exe",
     // activates virtual environment when you open up a new terminal in vscode
     "python.terminal.activateEnvInCurrentTerminal": true,
+    "workbench.colorCustomizations": {
+        "editorGroup.border": "#9800a9",
+        "panel.border": "#9800a9",
+        "sideBar.border": "#9800a9",
+        "statusBar.background": "#6a0076",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#9800a9",
+        "titleBar.activeBackground": "#6a0076",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#6a007699",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
 }
