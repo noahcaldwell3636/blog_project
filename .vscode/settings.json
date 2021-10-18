@@ -9,15 +9,19 @@
     // activates virtual environment when you open up a new terminal in vscode
     "python.terminal.activateEnvInCurrentTerminal": true,
     "workbench.colorCustomizations": {
-        "editorGroup.border": "#9800a9",
-        "panel.border": "#9800a9",
-        "sideBar.border": "#9800a9",
-        "statusBar.background": "#6a0076",
+        "editorGroup.border": "#266c4a",
+        "panel.border": "#266c4a",
+        "sideBar.border": "#266c4a",
+        "statusBar.background": "#194630",
         "statusBar.foreground": "#e7e7e7",
-        "statusBarItem.hoverBackground": "#9800a9",
-        "titleBar.activeBackground": "#6a0076",
+        "statusBarItem.hoverBackground": "#266c4a",
+        "titleBar.activeBackground": "#194630",
         "titleBar.activeForeground": "#e7e7e7",
-        "titleBar.inactiveBackground": "#6a007699",
-        "titleBar.inactiveForeground": "#e7e7e799"
+        "titleBar.inactiveBackground": "#19463099",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "sash.hoverBorder": "#266c4a",
+        "statusBarItem.remoteBackground": "#194630",
+        "statusBarItem.remoteForeground": "#e7e7e7"
     },
+    "peacock.color": "#194630",
 }

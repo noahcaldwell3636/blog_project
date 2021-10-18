@@ -5,7 +5,9 @@ from . import views as account_views
 app_name = 'accounts'
 
 urlpatterns = [
+    # admin login
     url(r"login/$", auth_views.LoginView.as_view(), {'template_name':"accounts/login.html"}, name='social-login'),
     url(r"logout/$", auth_views.LogoutView.as_view(), name="social-logout"),
+    # user account sign-up
     url(r"signup/$", account_views.SignUp.as_view(), name="social-signup"),
 ]

@@ -40,6 +40,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     # default apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,17 +48,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # NON-DEFAULT INSTALLED APPS 
-    'django.contrib.humanize', # tools for human readable data 
-    # 'django_plotly_dash.apps.DjangoPlotlyDashConfig', # provides dynamic graph functionality 
-    'bootstrap3', # styling package use {% load 'bootstrap3' %} to use html/css classes
+
+    # tools for human readable data
+    'django.contrib.humanize',  
+    # provides dynamic graph functionality
+    # 'django_plotly_dash.apps.DjangoPlotlyDashConfig',  
+    # styling package use {% load 'bootstrap3' %} to use html/css classes
+    'bootstrap3', 
+    # tagging for blog post functionality 
     'taggit',
+    # command line extensions for managing django projects
+    'django_extensions',
+
     # CREATED APPS
+
     'blog', # Personal/admin annco
     'social', # contains all of the basic user's functionality
-    # 'social.accounts', # non-admin/basic user accounts
-    # 'social.groups', # reddit-like pages for the users to interact
-    # 'social.posts', # text or media posts for communication
+    'social.accounts', # non-admin/basic user accounts
+    'social.groups', # reddit-like pages for the users to interact
+    'social.posts', # text or media posts for communication
 ]
 
 MIDDLEWARE = [
@@ -147,7 +158,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = '/static/'
-# where 'collectstatic' send all the staic files, not needed until deployment 
+# where 'collectstatic' sends all the staic files, not needed until deployment 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 BASE_STATIC_DIR = os.path.join(BASE_DIR, 'mysite/static')
@@ -166,8 +177,10 @@ LOGOUT_REDIRECT_URL = '/'
 # allows django to use frames within the html for the dash applications
 # X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+# Taggit library 
 TAGGIT_CASE_INSENSITIVE = True
 
+# this is the location where the uploaded media from the blog posts is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'blog_media')
 MEDIA_URL = '/blog_media/'
 
